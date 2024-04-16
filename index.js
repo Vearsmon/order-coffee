@@ -148,7 +148,7 @@ function mapMilkType(type) {
   if (type === 'soy') {
     return 'соевое';
   }
-  if (type === 'not-fat') {
+  if (type === 'no-fat') {
     return 'обезжиренное';
   }
   if (type === 'coconut') {
