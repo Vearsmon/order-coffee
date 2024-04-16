@@ -115,7 +115,43 @@ function buildOrderTable() {
     for (beverage of document.querySelectorAll(".beverage")) {
         const row = document.createElement("tr");
 
-        beverage.querySelector("select selected");
+        const beverageTypeSelection = beverage.querySelector("select");
+        const beverageType = beverageTypeSelection.options[beverageTypeSelection.selctedIndex].text;
+
+        const milkTypeSelection = beverage.querySelector("input[name='milk']:checked").value;
+        let milkType = '';
+        if (milkTypeSelection === 'usual') {
+            milkType = 'обычное';
+        }
+        if (milkTypeSelection === 'soy') {
+            milkType = 'соевое';
+        }
+        if (milkTypeSelection === 'not-fat') {
+            milkType = 'обезжиренное';
+        }
+        if (milkTypeSelection === 'coconut') {
+            milkType = 'кокосовое';
+        }
+
+        const inputElements = document.querySelectorAll('input[name="options"]:checked');
+        const options = []
+        for(let checked of inputElements) {
+            options.add(checked.value);
+        }
+        
+        const beverageCell = document.createElement("td");
+        beverageCell.appendChild(document.createTextNode(beverageType));
+        
+        const milkCell = document.createElement("td");
+        milkCell.appendChild(document.createTextNode(milkType));
+
+        const extraIngridientCell = document.createElement("td");
+        extraIngridientCell.appendChild(document.createTextNode(options.join()));
+        row.appendChild(beverageCell);
+        row.appendChild(milkCell);
+        row.appendChild(extraIngridientCell);
+
+        table.appendChild(row);
     }
 }
 
@@ -129,7 +165,7 @@ function buildTableHeader() {
     milkType.appendChild(document.createTextNode("Молоко"));
 
     const extraIngridient = document.createElement("th");
-    extraIngridient.appendChild(document.createTextNode("Молоко"));
+    extraIngridient.appendChild(document.createTextNode("Дополнительно"));
 
     header.appendChild(beverageType);
     header.appendChild(milkType);
