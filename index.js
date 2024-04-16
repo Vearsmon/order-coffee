@@ -160,6 +160,7 @@ function buildOrderTable() {
 
         table.appendChild(row);
     }
+    return table;
 }
 
 function buildTableHeader() {
@@ -193,11 +194,16 @@ btn.addEventListener("click", function (event) {
     <div class="modal-content"> 
       <span class="close">&times;</span>
       <p>Заказ сделан!</p>
+      <p>${getBeveragesCountString()}</p>
     </div>
   </div>`
   document.querySelector('body').appendChild(modal);
-  let modalClose = document.getElementsByClassName("close")[0];
+  
+  const modalClose = document.getElementsByClassName("close")[0];
   modalClose.addEventListener("click", function () {
     modal.remove();
   });
+  
+  const modalContent = document.querySelector(".modal-content");
+  modalContent.appendChild(buildOrderTable());
 });
