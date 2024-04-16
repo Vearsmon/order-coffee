@@ -58,6 +58,10 @@ document.querySelector(".add-button").addEventListener("click", function() {
   document.querySelector(".beverage").after(elem);
 });
 
+function closeSubmitionWindow() {
+    const submitionWindow = document.querySelector('.');
+    submitionWindow.remove();
+}
 
 function getBeveragesCountString() {
     const dirinksCount = document.querySelectorAll('.beverage').length;
