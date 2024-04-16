@@ -107,3 +107,13 @@ function getBeveragesCountString() {
         return `Вы заказали ${dirinksCount} напитка`
     }
 }
+
+document.getElementById("open-order").addEventListener("click", function() {
+  document.getElementById("overlay").style.display = "block";
+  document.getElementById("order").style.display = "block";
+});
+
+document.getElementById("close-order").addEventListener("click", function() {
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("order").style.display = "none";
+});

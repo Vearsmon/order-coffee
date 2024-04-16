@@ -9,66 +9,113 @@
 			position: absolute;
 			right: 30px;
 		}
+
+    #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+        display: none;
+    }
+
+    #order {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        max-height: 80vh;
+        overflow-y: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        z-index: 2;
+        display: none;
+    }
+
+    #order-content {
+        margin-bottom: 20px;
+    }
+
+    #close-order {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 20px;
+    }
 	</style>
   </head>
   <body>
-    <form>
-      <fieldset class="beverage">
-        <h4 class="beverage-count">Напиток №1</h4>
-        <label class="field">
-          <span class="label-text">Я буду</span>
-          <select>
-            <option value="espresso">Эспрессо</option>
-            <option value="capuccino" selected>Капучино</option>
-            <option value="cacao">Какао</option>
-          </select>
-        </label>
-        <div class="field">
-          <span class="checkbox-label">Сделайте напиток на</span>
-          <label class="checkbox-field">
-            <input type="radio" name="milk" value="usual" checked />
-            <span>обычном молоке</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="radio" name="milk" value="no-fat" />
-            <span>обезжиренном молоке</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="radio" name="milk" value="soy" />
-            <span>соевом молоке</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="radio" name="milk" value="coconut" />
-            <span>кокосовом молоке</span>
-          </label>
+    <button id="open-order">Сделать заказ</button>
+
+    <div id="overlay"></div>
+    <div id="order">
+        <button id="close-order">x</button>
+        <div id="order-content">
+          <form>
+            <fieldset class="beverage">
+              <h4 class="beverage-count">Напиток №1</h4>
+              <label class="field">
+                <span class="label-text">Я буду</span>
+                <select>
+                  <option value="espresso">Эспрессо</option>
+                  <option value="capuccino" selected>Капучино</option>
+                  <option value="cacao">Какао</option>
+                </select>
+              </label>
+              <div class="field">
+                <span class="checkbox-label">Сделайте напиток на</span>
+                <label class="checkbox-field">
+                  <input type="radio" name="milk" value="usual" checked />
+                  <span>обычном молоке</span>
+                </label>
+                <label class="checkbox-field">
+                  <input type="radio" name="milk" value="no-fat" />
+                  <span>обезжиренном молоке</span>
+                </label>
+                <label class="checkbox-field">
+                  <input type="radio" name="milk" value="soy" />
+                  <span>соевом молоке</span>
+                </label>
+                <label class="checkbox-field">
+                  <input type="radio" name="milk" value="coconut" />
+                  <span>кокосовом молоке</span>
+                </label>
+              </div>
+              <div class="field">
+                <span class="checkbox-label">Добавьте к напитку:</span>
+                <label class="checkbox-field">
+                  <input type="checkbox" name="options" value="whipped cream" />
+                  <span>взбитых сливок</span>
+                </label>
+                <label class="checkbox-field">
+                  <input type="checkbox" name="options" value="marshmallow" />
+                  <span>зефирок</span>
+                </label>
+                <label class="checkbox-field">
+                  <input type="checkbox" name="options" value="chocolate" />
+                  <span>шоколад</span>
+                </label>
+                <label class="checkbox-field">
+                  <input type="checkbox" name="options" value="cinnamon" />
+                  <span>корицу</span>
+                </label>
+              </div>
+            </fieldset>
+            <div>
+              <button type="button" class="add-button">+ Добавить напиток</button>
+            </div>
+            <div style="margin-top: 30px">
+              <button type="submit" class="submit-button">Готово</button>
+            </div>
+          </form>
         </div>
-        <div class="field">
-          <span class="checkbox-label">Добавьте к напитку:</span>
-          <label class="checkbox-field">
-            <input type="checkbox" name="options" value="whipped cream" />
-            <span>взбитых сливок</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="checkbox" name="options" value="marshmallow" />
-            <span>зефирок</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="checkbox" name="options" value="chocolate" />
-            <span>шоколад</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="checkbox" name="options" value="cinnamon" />
-            <span>корицу</span>
-          </label>
-        </div>
-      </fieldset>
-      <div>
-        <button type="button" class="add-button">+ Добавить напиток</button>
-      </div>
-      <div style="margin-top: 30px">
-        <button type="submit" class="submit-button">Готово</button>
-      </div>
-    </form>
+    </div>
 
     <script src="index.js"></script>
   </body>
