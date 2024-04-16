@@ -183,8 +183,8 @@ function buildTableHeader() {
 
 
 
-var btn = document.getElementById("openModal");
-var modalBack = document.getElementsByClassName("modal")[0];
+var btn = document.getElementById("open-order");
+var modalBack = document.getElementById("order")[0];
 
 btn.addEventListener("click", function (event) {
   event.preventDefault();
