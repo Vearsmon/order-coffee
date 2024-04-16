@@ -196,7 +196,7 @@ btn.addEventListener("click", function (event) {
     </div>
   </div>`
   document.querySelector('body').appendChild(modal);
-  let modalClose = document.getElementById("close-order")[0];
+  let modalClose = document.getElementsByClassName("close")[0];
   modalClose.addEventListener("click", function () {
     modal.remove();
   });
