@@ -182,8 +182,8 @@ function buildTableHeader() {
 
 
 
-var btn = document.getElementById("openModal");
-var modalBack = document.getElementsByClassName("modal")[0];
+var btn = document.getElementById("open-order");
+var modalBack = document.getElementById("order")[0];
 
 btn.addEventListener("click", function (event) {
   event.preventDefault();
@@ -196,7 +196,7 @@ btn.addEventListener("click", function (event) {
     </div>
   </div>`
   document.querySelector('body').appendChild(modal);
-  let modalClose = document.getElementsByClassName("close")[0];
+  let modalClose = document.getElementById("close-order")[0];
   modalClose.addEventListener("click", function () {
     modal.remove();
   });
