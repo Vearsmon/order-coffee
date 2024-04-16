@@ -117,3 +117,32 @@ document.getElementById("close-order").addEventListener("click", function() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("order").style.display = "none";
 });
+
+function buildOrderTable() {
+    const table = document.createElement("table");
+    table.appendChild(buildTableHeader());
+
+    for (beverage of document.querySelectorAll(".beverage")) {
+        const row = document.createElement("tr");
+
+        beverage.querySelector("select selected");
+    }
+}
+
+function buildTableHeader() {
+    const header = document.createElement("tr");
+
+    const beverageType = document.createElement("th");
+    beverageType.appendChild(document.createTextNode("Напиток"));
+    
+    const milkType = document.createElement("th");
+    milkType.appendChild(document.createTextNode("Молоко"));
+
+    const extraIngridient = document.createElement("th");
+    extraIngridient.appendChild(document.createTextNode("Молоко"));
+
+    header.appendChild(beverageType);
+    header.appendChild(milkType);
+    header.appendChild(extraIngridient);
+    return header;
+}
