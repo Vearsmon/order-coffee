@@ -113,27 +113,15 @@ function buildOrderTable() {
         const row = document.createElement("tr");
 
         const beverageTypeSelection = beverage.querySelector("select");
-        const beverageType = beverageTypeSelection.options[beverageTypeSelection.selctedIndex].text;
+        const beverageType = beverageTypeSelection.options[beverageTypeSelection.selectedIndex].text;
 
         const milkTypeSelection = beverage.querySelector("input[name='milk']:checked").value;
-        let milkType = '';
-        if (milkTypeSelection === 'usual') {
-            milkType = 'обычное';
-        }
-        if (milkTypeSelection === 'soy') {
-            milkType = 'соевое';
-        }
-        if (milkTypeSelection === 'not-fat') {
-            milkType = 'обезжиренное';
-        }
-        if (milkTypeSelection === 'coconut') {
-            milkType = 'кокосовое';
-        }
+        let milkType = mapMilkType(milkTypeSelection);
 
-        const inputElements = document.querySelectorAll('input[name="options"]:checked');
-        const options = []
-        for(let checked of inputElements) {
-            options.add(checked.value);
+        const extraIngridients = beverage.querySelectorAll('input[name="options"]:checked');
+        const options = [];
+        for(let checked of extraIngridients) {
+            options.push(mapExtraIngridient(checked.value));
         }
         
         const beverageCell = document.createElement("td");
@@ -151,6 +139,36 @@ function buildOrderTable() {
         table.appendChild(row);
     }
     return table;
+}
+
+function mapMilkType(type) {
+  if (type === 'usual') {
+    return 'обычное';
+  }
+  if (type === 'soy') {
+    return 'соевое';
+  }
+  if (type === 'not-fat') {
+    return 'обезжиренное';
+  }
+  if (type === 'coconut') {
+    return 'кокосовое';
+  }
+}
+
+function mapExtraIngridient(type) {
+  if (type === 'whipped cream') {
+    return 'взбитые сливки';
+  }
+  if (type === 'marshmallow') {
+    return 'зефирки';
+  }
+  if (type === 'chocolate') {
+    return 'шоколад';
+  }
+  if (type === 'cinnamon') {
+    return 'корица';
+  }
 }
 
 function buildTableHeader() {
@@ -173,8 +191,7 @@ function buildTableHeader() {
 
 
 
-var btn = document.getElementById("open-order");
-var modalBack = document.getElementById("order")[0];
+var btn = document.querySelector(".submit-button");
 
 btn.addEventListener("click", function (event) {
   event.preventDefault();
@@ -188,7 +205,7 @@ btn.addEventListener("click", function (event) {
     </div>
   </div>`
   document.querySelector('body').appendChild(modal);
-  let modalClose = document.getElementById("close-order")[0];
+  let modalClose = document.querySelector(".close");
   modalClose.addEventListener("click", function () {
     modal.remove();
   });
