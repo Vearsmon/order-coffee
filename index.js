@@ -58,11 +58,6 @@ document.querySelector(".add-button").addEventListener("click", function() {
   document.querySelector(".beverage").after(elem);
 });
 
-function closeSubmitionWindow() {
-    const submitionWindow = document.querySelector('.');
-    submitionWindow.remove();
-}
-
 function getBeveragesCountString() {
     const dirinksCount = document.querySelectorAll('.beverage').length;
     const lastDigit = dirinksCount % 10;
@@ -76,3 +71,24 @@ function getBeveragesCountString() {
         return `Вы заказали ${dirinksCount} напитка`
     }
 }
+
+
+var btn = document.getElementById("openModal");
+var modalBack = document.getElementsByClassName("modal")[0];
+
+btn.addEventListener("click", function (event) {
+  event.preventDefault();
+  const modal = document.createElement('div');
+  modal.innerHTML = `
+  <div id="myModal" class="modal"> 
+    <div class="modal-content"> 
+      <span class="close">&times;</span>
+      <p>Заказ сделан!</p>
+    </div>
+  </div>`
+  document.querySelector('body').appendChild(modal);
+  let modalClose = document.getElementsByClassName("close")[0];
+  modalClose.addEventListener("click", function () {
+    modal.remove();
+  });
+});
